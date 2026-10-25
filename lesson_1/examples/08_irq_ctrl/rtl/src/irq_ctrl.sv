@@ -28,9 +28,10 @@ module irq_ctrl (
 
     always_comb begin
         reqs_msb = 3'b0;
-        for (int i = 2; i >= 0; i = i - 1) begin
+        for (int i = 0; i <= 2; i = i + 1) begin
             reqs_msb = reqs_i[i] ? 3'(1'b1 << i) : reqs_msb;
         end
+        // reqs_msb = reqs_i[2] ? 3'h4 : (reqs_i[1] ? 3'h2 : (reqs_i[0] ? 3'h1 : 3'h0));
     end
 
     always_comb begin
